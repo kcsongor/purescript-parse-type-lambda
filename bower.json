@@ -1,0 +1,19 @@
+{
+  "name": "purescript-parse-type-lambda",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "output"
+  ],
+  "dependencies": {
+    "purescript-prelude": "^3.1.0",
+    "purescript-console": "^3.0.0",
+    "purescript-strings": "^3.3.0",
+    "purescript-typelevel-prelude": "kcsongor/purescript-typelevel-prelude#8603ec35feafedee9e5b285091573ecb555f0215",
+    "purescript-type-program": "LiamGoodacre/purescript-type-program#596b7db95f9441e2b6f57d79d6544dd1bcf33c56"
+  },
+  "devDependencies": {
+    "purescript-psci-support": "^3.0.0"
+  }
+}
