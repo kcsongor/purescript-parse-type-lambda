@@ -1,14 +1,8 @@
 module Type.Program.Parser where
 
 import Type.Data.Symbol (class ConsSymbol)
-
---import Type.Program.Lang
-
--- TODO: turn these into Liam's de Bruijn rep
-foreign import kind Lang
-foreign import data Var :: Symbol -> Lang
-foreign import data Lam :: Symbol -> Lang -> Lang
-foreign import data App :: Lang -> Lang -> Lang
+import Type.Program.Lambda
+import Type.Program.Convert (class Convert)
 
 class Parse (input :: Symbol) (out :: Lang) (rest :: Symbol) | input -> out rest
 
@@ -82,5 +76,10 @@ else instance parseVar5 ::
   , ConsSymbol x x' var
   ) => ParseP PVar x xs (Var var) rest
 
-parse :: forall input output rest. Parse input output rest => @input -> @output
-parse _ = @output
+parse
+  :: forall input output rest expr
+  .  Convert output expr
+  => Parse input output rest
+  => @input
+  -> @expr
+parse _ = @expr
